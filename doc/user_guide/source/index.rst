@@ -102,5 +102,5 @@ Some interesting ways to contribute to the project:
 * **Hire us** to work on your next project - we build websites large and small.
 
 
-.. _GitHub: http://github.com/typus/typus
+.. _GitHub: https://github.com/fesplugas/typus/
 .. _Rails: http://rubyonrails.org/

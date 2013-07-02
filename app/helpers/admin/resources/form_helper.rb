@@ -1,9 +1,9 @@
 module Admin::Resources::FormHelper
 
-  def build_form(fields, form)
+  def build_form(fields, form, resource = @resource)
     String.new.tap do |html|
       fields.each do |key, value|
-        value = :template if (template = @resource.typus_template(key))
+        value = :template if (template = resource.typus_template(key))
         html << case value
                 when :belongs_to
                   typus_belongs_to_field(key, form)

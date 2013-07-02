@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 # Declare your gem's dependencies in typus.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -12,7 +12,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -22,14 +22,13 @@ platforms :jruby do
   gem 'activerecord-jdbcmysql-adapter'
   gem 'activerecord-jdbcpostgresql-adapter'
   gem 'activerecord-jdbcsqlite3-adapter'
-
-  gem 'jruby-openssl' # JRuby limited openssl loaded. http://jruby.org/openssl
 end
 
 platforms :ruby do
   gem 'mysql2', '~> 0.3.11'
   gem 'pg', '~> 0.14.1'
   gem 'sqlite3', '~> 1.3.7'
+  gem 'bson_ext'
 end
 
 # Typus can manage lists, trees, trashes, so we want to enable this stuff
@@ -48,7 +47,8 @@ gem 'factory_girl_rails', '~> 1.7.0'
 gem 'jquery-rails'
 
 # Rich Text Editor
-gem "ckeditor-rails", "~> 0.0.5"
+# gem "ckeditor-rails", "~> 0.0.5"
+gem "ckeditor-rails", :git => "git://github.com/fesplugas/rails-ckeditor.git"
 
 # Alternative authentication
 gem 'devise', '~> 2.0.5'
@@ -62,10 +62,9 @@ gem 'paperclip', '~> 2.7.5'
 
 # MongoDB
 gem 'mongoid', '~> 2.4.6'
-gem 'bson_ext', '~> 1.6.1'
 
 group :test do
-  gem 'mocha', '~> 0.12.10', :require => false
+  gem 'mocha', '~> 0.13.3', :require => false
 end
 
 gem 'kaminari'

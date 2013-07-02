@@ -6,6 +6,23 @@ module Admin::Resources::DisplayHelper
 
   def build_display(item, fields)
     fields.map do |attribute, type|
+
+      # This hack allows us to force an item to be displayed using a custom
+      # helper. Imagine we have a "currency" stored as a float. We will set the
+      # template for this attribute to "currency" and then we will add a helper
+      # method to display it. In this case we will implement the helper:
+      #
+      #     def display_currency(item, attribute)
+      #       number = item.send(attribute)
+      #       my_number_to_currency(number)
+      #     end
+      #
+      # Note: This stuff will probably change in the near future.
+      #
+      if (template = @resource.typus_template(attribute))
+        type = template
+      end
+
       condition = (type == :boolean) || item.send(attribute).present?
       value = condition ? send("display_#{type}", item, attribute) : mdash
       [@resource.human_attribute_name(attribute), value]

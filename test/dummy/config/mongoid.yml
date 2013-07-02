@@ -1,0 +1,8 @@
+development:
+  database: <%= ENV.fetch('MONGOID_DATABASE', 'typus_development') %>
+
+test:
+  database: <%= ENV.fetch('MONGOID_DATABASE', 'typus_test') %>
+
+production:
+  database: <%= ENV.fetch('MONGOID_DATABASE', 'typus_production') %>

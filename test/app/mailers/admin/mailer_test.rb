@@ -7,7 +7,7 @@ class Admin::MailerTest < ActiveSupport::TestCase
     user = FactoryGirl.build(:typus_user, :token => "qswed3-64g3fb")
     mail = Admin::Mailer.reset_password_instructions(user, host)
 
-    assert_nil Admin::Mailer.default[:from]
+    refute mail.from.empty?
     assert mail.to.include?(user.email)
 
     expected = "[#{Typus.admin_title}] Reset password"
@@ -16,6 +16,11 @@ class Admin::MailerTest < ActiveSupport::TestCase
 
     url = "http://#{host}/admin/account/#{user.token}"
     assert_match url, mail.body.encoded
+  end
+
+  # This is a kind of hack to verify we are properly setting a value.
+  test 'from is set from test.rb' do
+    assert_equal 'john@example.com', Admin::Mailer.default[:from]
   end
 
 end

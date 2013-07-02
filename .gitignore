@@ -3,7 +3,6 @@ log/*.log
 pkg/
 
 test/dummy/config/email.yml
-test/dummy/config/mongoid.yml
 test/dummy/db/*.sqlite3
 test/dummy/log/*.log
 test/dummy/public/system/
@@ -12,6 +11,4 @@ test/dummy/vendor/bundle/
 
 vendor/bundle
 vendor/gems
-
-# This is a RubyGem so there's no need to keep the `Gemfile.lock`.
-Gemfile.lock
+vendor/ruby

@@ -9,6 +9,13 @@
 class Entry < ActiveRecord::Base
 
   ##
+  # Accessors
+  #
+
+  attr_accessible :title, :content, :published, :as => :root
+  attr_accessible :title, :content, :published
+
+  ##
   # Validations
   #
 

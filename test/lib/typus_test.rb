@@ -18,9 +18,9 @@ class TypusTest < ActiveSupport::TestCase
     assert Typus.authentication.eql?(:session)
   end
 
-  test "default_config for mailer_sender" do
-    assert Typus.mailer_sender.nil?
-  end
+  # test "default_config for mailer_sender" do
+  #   assert Typus.mailer_sender.nil?
+  # end
 
   test "default_config for username" do
     assert Typus.username.eql?('admin')

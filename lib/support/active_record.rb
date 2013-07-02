@@ -38,4 +38,18 @@ class ActiveRecord::Base
     end
   end
 
+  def self.accessible_attributes_role_for(role)
+    if accessible_attributes(role).empty?
+      :default
+    else
+      role
+    end
+  end
+
+  def self.without_protection?(role)
+    role = accessible_attributes_role_for(role)
+    attributes = accessible_attributes(role).reject { |i| i.empty? }
+    attributes.empty?
+  end
+
 end

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+pushd doc/user_guide > /dev/null
+  make html
+popd > /dev/null
+
+pushd test/dummy > /dev/null
+  bundle install --path vendor --deployment --binstubs
+  bundle exec rake assets:precompile
+  touch tmp/restart.txt
+popd > /dev/null

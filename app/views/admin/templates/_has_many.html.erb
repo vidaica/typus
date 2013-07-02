@@ -6,6 +6,7 @@
 
   <h2>
     <%= @resource.human_attribute_name(association_name) %>
+    <%= " (#{@data.count})" if @resource.typus_options_for(:counters) %>
     <small><%= add_new %></small>
   </h2>
 

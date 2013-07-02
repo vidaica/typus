@@ -43,4 +43,5 @@ Typus.setup do |config|
   config.authentication = :session
   config.user_class_name = "TypusUser"
   config.user_foreign_key = "typus_user_id"
+  config.mailer_sender = "john@example.com"
 end

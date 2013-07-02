@@ -1,4 +1,4 @@
-<% connection = ENV.fetch('DB', 'postgresql') %>
+<% connection = ENV.fetch('DB', 'sqlite3') %>
 
 ##
 # Database settings.
@@ -15,9 +15,9 @@ postgresql: &postgresql
   encoding: unicode
   database: typus_<%= Rails.env %>
   pool: 5
-  username: <%= ENV.fetch('DB_USERNAME', 'postgres') %>
+  username: <%= ENV.fetch('DB_USERNAME', '') %>
   password: <%= ENV.fetch('DB_PASSWORD', '') %>
-  min_messages: warning
+  # min_messages: warning
   # host: localhost
   # port: 5432
 

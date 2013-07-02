@@ -66,4 +66,14 @@ class ActiveRecordTest < ActiveSupport::TestCase
     assert_equal "delayed/tasks", Delayed::Task.to_resource
   end
 
+  test 'accessible_attributes_for(role)' do
+    assert_equal :root, Entry.accessible_attributes_role_for(:root)
+    assert_equal :default, Entry.accessible_attributes_role_for(:admin)
+  end
+
+  test 'without_protection?(role)' do
+    refute Entry.without_protection?(:root)
+    assert Article.without_protection?(:admin)
+  end
+
 end
