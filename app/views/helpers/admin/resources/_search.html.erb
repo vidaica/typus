@@ -1,10 +1,12 @@
-<%= form_tag nil, :method => :get, :class => "well form-search" do %>
-  <%= search_field_tag "search",
-                       nil,
-                       :placeholder => params[:search],
-                       :class => "input-medium search-query" %>
+<%= form_tag nil, :method => :get, :class => "form-search" do %>
 
-  <button type="submit" class="btn">Search</button>
+  <div class="input-append">
+    <%= search_field_tag "search",
+                         nil,
+                         :placeholder => params[:search],
+                         :class => "search-query" %>
+    <button type="submit" class="btn">Search</button>
+  </div>
 
   <% hidden_filters.each do |key, value| %>
     <%= hidden_field_tag key, value %>
