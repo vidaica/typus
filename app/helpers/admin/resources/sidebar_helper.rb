@@ -46,9 +46,9 @@ module Admin::Resources::SidebarHelper
   end
 
   def sidebar_view_site
-    if Typus.admin_title_link
+    if Typus.link_to_view_site
       { :message => Typus::I18n.t("View Site"),
-        :url => Typus.admin_title_link,
+        :url => root_path,
         :icon => "share" }
     end
   end

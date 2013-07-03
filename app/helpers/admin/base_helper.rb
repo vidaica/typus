@@ -1,9 +1,5 @@
 module Admin::BaseHelper
 
-  def admin_header
-    render "helpers/admin/base/header", { :admin_title => admin_title }
-  end
-
   def admin_title(page_title = nil)
     if page_title
       content_for(:title) { page_title }
