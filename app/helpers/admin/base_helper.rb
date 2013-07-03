@@ -40,7 +40,7 @@ module Admin::BaseHelper
     if flash.any?
       String.new.tap do |html|
         flash.each do |type, message|
-          html << content_tag(:div, message, :id => 'flash', :class => type)
+          html << content_tag(:div, message, :id => 'flash', :class => "alert alert-#{type}")
         end
       end.html_safe
     end
