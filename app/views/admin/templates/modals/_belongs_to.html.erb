@@ -1,6 +1,6 @@
 <% content_for "modal_for_#{attribute}" do %>
 
-  <% new_page_title = Typus::I18n.t("Add New %{resource}", :resource => related.model_name.human.titleize) %>
+  <% new_page_title = Typus::I18n.t("Add %{resource}", :resource => related.model_name.human.titleize) %>
 
   <div id="modal-from-dom-<%= attribute_id %>" class="modal hide fade">
 
