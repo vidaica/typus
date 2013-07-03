@@ -8,7 +8,11 @@ module Admin::Resources::SidebarHelper
       locals[:sidebar_title] = @resource.model_name.human.pluralize
     end
 
-    locals[:extra_actions] = [sidebar_dashboard, sidebar_help, sidebar_view_site].compact
+    locals[:extra_actions] = [
+      sidebar_dashboard,
+      sidebar_help,
+      sidebar_view_site,
+    ].compact
 
     render "helpers/admin/resources/sidebar", locals
   end
