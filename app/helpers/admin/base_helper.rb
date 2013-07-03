@@ -55,4 +55,12 @@ module Admin::BaseHelper
       "url" => "override-this" }
   end
 
+  def body_class
+    if params[:controller] == 'admin/dashboard'
+      "base dashboard #{params[:action].parameterize}"
+    else
+      "base #{@resource.model_name.human.parameterize} #{params[:action].parameterize}"
+    end
+  end
+
 end
