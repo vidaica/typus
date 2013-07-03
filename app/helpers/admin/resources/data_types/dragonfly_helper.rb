@@ -4,17 +4,17 @@ module Admin::Resources::DataTypes::DragonflyHelper
     typus_dragonfly_preview(item, attribute)
   end
 
-  def link_to_detach_attribute_for_dragonfly(attribute)
+  def can_detach_dragonfly_attribute?(attribute)
     validators = @item.class.validators.delete_if { |i| i.class != ActiveModel::Validations::PresenceValidator }.map(&:attributes).flatten.map(&:to_s)
     attachment = @item.send(attribute)
+    attachment.present? && !validators.include?(attribute)
+  end
 
-    if attachment.present? && !validators.include?(attribute) && attachment
-      attribute_i18n = @item.class.human_attribute_name(attribute)
-      label_text = <<-HTML
-#{attribute_i18n}
-<small>#{link_to Typus::I18n.t("Remove"), { :action => 'update', :id => @item.id, :_nullify => attribute, :_continue => true }, { :data => { :confirm => Typus::I18n.t("Are you sure?") } } }</small>
-      HTML
-      label_text.html_safe
+  def button_to_detach_attribute_for_dragonfly(attribute)
+    if can_detach_dragonfly_attribute?(attribute)
+      button_to Typus::I18n.t("Remove"),
+        { :action => 'update', :id => @item.id, :_nullify => attribute, :_continue => true },
+        { :data => { :confirm => Typus::I18n.t("Are you sure?") }, :class => 'btn btn-mini btn-danger' }
     end
   end
 
