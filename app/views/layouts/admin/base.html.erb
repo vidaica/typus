@@ -6,7 +6,7 @@
   <%= render 'admin/shared/head' %>
 </head>
 
-<body class="base">
+<body class="base <%= params[:action].parameterize %> <%= @resource.model_name.human.parameterize %>">
 
   <div class="container">
     <div class="navbar">
