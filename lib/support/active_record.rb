@@ -38,6 +38,10 @@ class ActiveRecord::Base
     end
   end
 
+  def identifier
+    "##{id}"
+  end
+
   def self.accessible_attributes_role_for(role)
     if accessible_attributes(role).empty?
       :default
