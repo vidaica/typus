@@ -40,9 +40,11 @@ module Admin::Resources::SidebarHelper
   end
 
   def sidebar_help
-    { :message => Typus::I18n.t("Help"),
-      :url => "#",
-      :icon => "info-sign" }
+    if Typus.link_to_help
+      { :message => Typus::I18n.t("Help"),
+        :url => "#",
+        :icon => "info-sign" }
+    end
   end
 
   def sidebar_view_site
