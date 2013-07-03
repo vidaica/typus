@@ -1,4 +1,6 @@
-<li id="<%= attribute_id %>">
-  <%= form.label attribute, label_text %>
-  <%= form.date_select attribute, options, html_options %>
-</li>
+<div class="control-group" id="<%= attribute_id %>">
+  <%= form.label attribute, label_text, { :class => "control-label" } %>
+  <div class="controls">
+    <%= form.date_select attribute, options, html_options %>
+  </div>
+</div>
