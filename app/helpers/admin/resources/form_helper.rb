@@ -23,11 +23,14 @@ module Admin::Resources::FormHelper
   end
 
   def typus_template_field(attribute, template, form)
-    options = { :start_year => @resource.typus_options_for(:start_year),
-                :end_year => @resource.typus_options_for(:end_year),
-                :minute_step => @resource.typus_options_for(:minute_step),
-                :disabled => attribute_disabled?(attribute),
-                :include_blank => true }
+    options = {
+      :start_year => @resource.typus_options_for(:start_year),
+      :end_year => @resource.typus_options_for(:end_year),
+      :minute_step => @resource.typus_options_for(:minute_step),
+      :disabled => attribute_disabled?(attribute),
+      :include_blank => true,
+      :class => 'input-xxlarge',
+    }
 
     html_options = attribute_disabled?(attribute) ? { :disabled => 'disabled' } : {}
 
