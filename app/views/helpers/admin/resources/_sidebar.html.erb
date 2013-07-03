@@ -17,7 +17,7 @@
 
     <% extra_actions.each do |action| %>
       <li>
-        <%= link_to action[:url] do %>
+        <%= link_to action[:url], action[:link_to_options] do %>
           <i class="icon-<%= action[:icon] %>"></i>
           <%= action[:message] %>
         <% end %>

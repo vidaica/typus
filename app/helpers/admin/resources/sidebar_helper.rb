@@ -51,6 +51,7 @@ module Admin::Resources::SidebarHelper
     if Typus.link_to_view_site
       { :message => Typus::I18n.t("View Site"),
         :url => root_path,
+        :link_to_options => { :target => '_blank' },
         :icon => "share" }
     end
   end
