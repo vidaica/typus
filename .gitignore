@@ -2,6 +2,7 @@
 bin/
 log/*.log
 pkg/
+bin/
 
 test/dummy/config/email.yml
 test/dummy/db/*.sqlite3
