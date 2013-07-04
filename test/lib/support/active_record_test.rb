@@ -37,6 +37,14 @@ class ActiveRecordTest < ActiveSupport::TestCase
     assert_equal "Not Published - Hash", post.mapping(:status)
   end
 
+  test "mapping with a hash with symbols" do
+    expected = { "Pending - Hash" => :pending, "Published - Hash" => :published }
+    Post.stubs(:statuses).returns(expected)
+
+    post = FactoryGirl.build(:post)
+    assert_equal "Published - Hash", post.mapping(:status)
+  end
+
   test "mapping with a hash when value does not exist on the mapping definition" do
     Post.stubs(:statuses).returns(Hash.new)
     page = FactoryGirl.build(:post, :status => "unexisting")
