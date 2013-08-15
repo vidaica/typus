@@ -4,8 +4,8 @@ module Typus
     module ActsAsList
 
       def self.included(base)
-        base.before_filter :get_object, :only => [:position]
-        base.before_filter :check_resource_ownership, :only => [:position]
+        base.before_filter :get_object, :only => [:position] + base::Whitelist + [:show]
+        base.before_filter :check_resource_ownership, :only => [:position] + base::Whitelist
       end
 
       def position
