@@ -16,7 +16,7 @@
 
   <ul class="predefined_filters">
     <li>
-      <%= link_to Typus::I18n.t("All"), params.dup.cleanup.merge(:action => 'index') %>
+      <%= link_to Typus::I18n.t("All"), params.dup.cleanup.merge(:action => 'index',:reset_filter => 1) %>
       <%= "(#{resource.count})" if @resource.typus_options_for(:counters) %>
     </li>
 

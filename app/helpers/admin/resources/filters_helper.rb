@@ -11,6 +11,8 @@ module Admin::Resources::FiltersHelper
 
       rejections = %w(controller action locale utf8 sort_order order_by) + locals[:filters].map { |f| f[:key] }
       locals[:hidden_filters] = params.dup.delete_if { |k, v| rejections.include?(k) }
+            
+      locals[:filter_values] = (session[@object_name][:conditions] || {}).merge(params)      
 
       render "helpers/admin/resources/filters", locals
     end

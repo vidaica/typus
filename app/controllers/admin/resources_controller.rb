@@ -178,9 +178,15 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def set_wheres
-    @resource.build_conditions(params).each do |condition|
+           
+    session[@object_name] = {} if ! session[@object_name] or params[:reset_filter] == '1'          
+    conditions = (session[@object_name][:conditions] || {}).merge(params)
+    session[@object_name][:conditions] = conditions
+            
+    @resource.build_conditions(conditions).each do |condition|
       @resource = @resource.where(condition)
     end
+    
   end
 
   def set_joins
